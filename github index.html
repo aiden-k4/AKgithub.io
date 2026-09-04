@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aiden Kortze's professional portfolio featuring information systems, analytics, web development, and AI projects.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Aiden Kortze | Information Systems Portfolio</title>
+  <style>
+    :root {
+      --navy: #0b1220;
+      --navy-soft: #15213a;
+      --blue: #5ea4ff;
+      --blue-dark: #2176d2;
+      --mint: #58d6c0;
+      --paper: #f6f8fc;
+      --white: #ffffff;
+      --ink: #182235;
+      --muted: #5d697b;
+      --line: #dce3ec;
+      --shadow: 0 18px 50px rgba(22, 36, 61, 0.11);
+      --radius: 20px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(11, 18, 32, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--mint);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #dbe7f6;
+      font-size: 0.92rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--mint);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 85% 22%, rgba(88, 214, 192, 0.18), transparent 24rem),
+        radial-gradient(circle at 20% 0%, rgba(94, 164, 255, 0.18), transparent 30rem),
+        var(--navy);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+      align-items: center;
+      gap: 70px;
+      padding-block: 88px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #bcd8ff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      content: "";
+      background: var(--mint);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: clamp(3.2rem, 8vw, 6.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-subtitle {
+      max-width: 690px;
+      margin-bottom: 32px;
+      color: #c8d5e6;
+      font-size: clamp(1.06rem, 2vw, 1.3rem);
+    }
+
+    .hero-subtitle strong {
+      color: var(--white);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--navy);
+      background: var(--mint);
+    }
+
+    .button-secondary {
+      color: var(--white);
+      border-color: rgba(255,255,255,.26);
+      background: rgba(255,255,255,.05);
+    }
+
+    .hero-card {
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 24px 60px rgba(0,0,0,.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card-label {
+      margin-bottom: 18px;
+      color: #98a9be;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .focus-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #eaf1fa;
+      font-weight: 650;
+    }
+
+    .focus-list li::before {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      content: "";
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(94,164,255,.11);
+    }
+
+    main section {
+      padding-block: 92px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 40px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--blue-dark);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 720px;
+      margin-bottom: 0;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 40px;
+    }
+
+    .about-accent {
+      width: 72px;
+      height: 6px;
+      margin-top: 12px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--blue), var(--mint));
+    }
+
+    .about-copy {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .skills-section {
+      border-block: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill {
+      min-height: 88px;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+      font-weight: 750;
+      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .skill:hover {
+      border-color: #a9c9ed;
+      box-shadow: 0 12px 30px rgba(33, 118, 210, .08);
+      transform: translateY(-3px);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 285px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 8px 24px rgba(22,36,61,.05);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card::after {
+      position: absolute;
+      right: -34px;
+      bottom: -48px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      content: "";
+      background: rgba(94,164,255,.08);
+    }
+
+    .project-number {
+      color: var(--blue-dark);
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.45rem;
+      letter-spacing: -.025em;
+    }
+
+    .project-card p {
+      max-width: 460px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .project-status {
+      width: max-content;
+      margin-top: 26px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #147264;
+      background: #e5f8f4;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .resume-band {
+      padding-block: 0 92px;
+    }
+
+    .resume-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 38px 42px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: linear-gradient(115deg, var(--navy-soft), #12365a);
+      box-shadow: var(--shadow);
+    }
+
+    .resume-card h2 {
+      margin-bottom: 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
+
+    .resume-card p {
+      margin-bottom: 0;
+      color: #c5d3e3;
+    }
+
+    .contact-section {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: end;
+      gap: 70px;
+    }
+
+    .contact-section .section-kicker {
+      color: var(--mint);
+    }
+
+    .contact-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .contact-copy {
+      max-width: 610px;
+      margin-bottom: 0;
+      color: #aebdd0;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      color: #e4edf8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .contact-link span {
+      color: var(--mint);
+    }
+
+    footer {
+      padding-block: 24px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: #91a2b7;
+      background: var(--navy);
+      font-size: .86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--mint);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        gap: 45px;
+      }
+
+      .hero-card {
+        max-width: 520px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .nav {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links li:nth-child(-n+2) {
+        display: none;
+      }
+
+      .hero-inner,
+      main section {
+        padding-block: 70px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading,
+      .about-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading,
+      .about-grid {
+        gap: 18px;
+      }
+
+      .project-card {
+        min-height: 250px;
+        padding: 24px;
+      }
+
+      .resume-band {
+        padding-bottom: 70px;
+      }
+
+      .resume-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 30px 26px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Aiden Kortze home">AK<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner container">
+        <div>
+          <div class="eyebrow">Professional Portfolio</div>
+          <h1 id="hero-title">Aiden<br>Kortze</h1>
+          <p class="hero-subtitle"><strong>Information Systems Student</strong> exploring the intersection of business, technology, data, and artificial intelligence.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#projects">Explore my work</a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Areas of focus">
+          <p class="hero-card-label">Areas of focus</p>
+          <ul class="focus-list">
+            <li>Business analytics</li>
+            <li>AI-assisted problem solving</li>
+            <li>Web development</li>
+            <li>Process improvement</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">01 / About</div>
+          <h2 id="about-title">Curious about how technology creates better business decisions.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-accent" aria-hidden="true"></div>
+          <p class="about-copy">I am an Information Systems student interested in using technology to solve practical business problems. My career interests include business analytics, systems analysis, process improvement, and technology consulting. I am especially interested in how artificial intelligence can help organizations make stronger decisions, automate routine work, and create better customer experiences. I enjoy learning technical tools such as HTML, CSS, Python, SQL, Git, and data visualization platforms, then applying them to real-world challenges. Through my coursework and projects, I am developing a balanced set of business, communication, analytical, and technical skills. My goal is to contribute to teams that use data and emerging technology thoughtfully, responsibly, and effectively.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">02 / Skills</div>
+          <h2 id="skills-title">A growing toolkit for building, analyzing, and improving.</h2>
+        </div>
+        <div class="skills-grid" role="list">
+          <div class="skill" role="listitem">HTML</div>
+          <div class="skill" role="listitem">CSS</div>
+          <div class="skill" role="listitem">JavaScript</div>
+          <div class="skill" role="listitem">Python</div>
+          <div class="skill" role="listitem">SQL</div>
+          <div class="skill" role="listitem">Git</div>
+          <div class="skill" role="listitem">GitHub</div>
+          <div class="skill" role="listitem">Microsoft Excel</div>
+          <div class="skill" role="listitem">Data Analytics</div>
+          <div class="skill" role="listitem">AI Prompt Engineering</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">03 / Projects</div>
+          <h2 id="projects-title">Coursework becoming a portfolio of practical experience.</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div>
+              <div class="project-number">PROJECT 01</div>
+              <h3>AI Business Analysis</h3>
+              <p>Analyze business data with AI tools and translate the findings into clear, actionable recommendations.</p>
+            </div>
+            <div class="project-status">Coming this semester</div>
+          </article>
+          <article class="project-card">
+            <div>
+              <div class="project-number">PROJECT 02</div>
+              <h3>Data Visualization</h3>
+              <p>Design an interactive dashboard that helps an audience quickly understand trends and key performance indicators.</p>
+            </div>
+            <div class="project-status">Coming this semester</div>
+          </article>
+          <article class="project-card">
+            <div>
+              <div class="project-number">PROJECT 03</div>
+              <h3>Web Development</h3>
+              <p>Build a responsive website with an accessible, mobile-friendly interface and a clear visual hierarchy.</p>
+            </div>
+            <div class="project-status">Coming this semester</div>
+          </article>
+          <article class="project-card">
+            <div>
+              <div class="project-number">PROJECT 04</div>
+              <h3>Process Improvement</h3>
+              <p>Redesign a business workflow with AI assistance to reduce friction, save time, and improve outcomes.</p>
+            </div>
+            <div class="project-status">Coming this semester</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="resume-band">
+      <div class="container">
+        <div class="resume-card">
+          <div>
+            <h2>Resume</h2>
+            <p>A downloadable resume will be added soon.</p>
+          </div>
+          <span class="button button-secondary" aria-label="Resume coming soon">Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-grid container">
+        <div>
+          <div class="section-kicker">04 / Contact</div>
+          <h2 id="contact-title">Let’s connect.</h2>
+          <p class="contact-copy">I’m always interested in learning from others, exploring new ideas, and connecting with people working in business and technology.</p>
+        </div>
+        <div class="contact-links">
+          <!-- Replace the email address and links below with your own details. -->
+          <a class="contact-link" href="mailto:yourname@utah.edu">yourname@utah.edu <span aria-hidden="true">↗</span></a>
+          <a class="contact-link" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner container">
+      <span>© <span id="year">2026</span> Aiden Kortze</span>
+      <span>Designed and built with HTML &amp; CSS</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
